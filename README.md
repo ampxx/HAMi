@@ -59,10 +59,13 @@ helm repo update
 # cleaner than 4.8 GiB and easier to reason about when scheduling multiple jobs.
 # Update 2025-06: bumped deviceSplitCount from 6 to 8 to allow smaller 3 GiB
 # slices; useful when running many lightweight inference jobs simultaneously.
+# Update 2025-07: added migStrategy=none explicitly — MIG is not enabled on my
+# RTX 3090s and leaving it unset caused confusing log warnings at startup.
 helm install hami hami-charts/hami \
   --namespace kube-system \
   --set devicePlugin.deviceMemoryScaling=1.0 \
-  --set devicePlugin.deviceSplitCount=8
+  --set devicePlugin.deviceSplitCount=8 \
+  --set devicePlugin.migStrategy=none
 ```
 
 ### Usage
@@ -83,10 +86,5 @@ spec:
         nvidia.com/gpu: 1
         nvidia.com/gpumem: 4096    # 4 GiB GPU memory
         nvidia.com/gpucores: 50    # 50% GPU compute
+``
 ```
-
-## Supported Devices
-
-| Vendor   | Device Type | Resource Name         |
-|----------|-------------|----------------------|
-| NVIDIA   | GPU         | `n
