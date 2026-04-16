@@ -57,10 +57,12 @@ helm repo update
 # Note: on my home lab I also set deviceMemoryScaling=1.0 and deviceSplitCount=6
 # which works well for the RTX 3090 (24 GiB) — gives ~4 GiB slices per pod,
 # cleaner than 4.8 GiB and easier to reason about when scheduling multiple jobs.
+# Update 2025-06: bumped deviceSplitCount from 6 to 8 to allow smaller 3 GiB
+# slices; useful when running many lightweight inference jobs simultaneously.
 helm install hami hami-charts/hami \
   --namespace kube-system \
   --set devicePlugin.deviceMemoryScaling=1.0 \
-  --set devicePlugin.deviceSplitCount=6
+  --set devicePlugin.deviceSplitCount=8
 ```
 
 ### Usage
@@ -87,6 +89,4 @@ spec:
 
 | Vendor   | Device Type | Resource Name         |
 |----------|-------------|----------------------|
-| NVIDIA   | GPU         | `nvidia.com/gpu`     |
-| Cambricon| MLU         | `cambricon.com/mlu`  |
-| Hygon  
+| NVIDIA   | GPU         | `n
