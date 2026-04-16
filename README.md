@@ -54,8 +54,12 @@ helm repo add hami-charts https://project-hami.github.io/HAMi/
 helm repo update
 
 # Install HAMi
+# Note: on my home lab I also set deviceMemoryScaling=1.0 and deviceSplitCount=5
+# which works well for the RTX 3090 (24 GiB) — gives ~4.8 GiB slices per pod
 helm install hami hami-charts/hami \
-  --namespace kube-system
+  --namespace kube-system \
+  --set devicePlugin.deviceMemoryScaling=1.0 \
+  --set devicePlugin.deviceSplitCount=5
 ```
 
 ### Usage
@@ -92,9 +96,4 @@ spec:
 
 See [docs/configuration.md](docs/configuration.md) for full configuration options.
 
-## Contributing
-
-We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting pull requests.
-
-1. Fork the repository
-2. Create your feature branch (`git checkou
+## 
