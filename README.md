@@ -5,6 +5,8 @@
 
 HAMi (Heterogeneous AI Computing Virtualization Middleware) is a Kubernetes device plugin and scheduler extension that enables fine-grained sharing and isolation of heterogeneous AI accelerators (GPUs, NPUs, etc.) across workloads.
 
+> **Personal fork** – I'm using this to experiment with GPU sharing on my home lab cluster (3× RTX 3090 nodes). Upstream repo: [Project-HAMi/HAMi](https://github.com/Project-HAMi/HAMi).
+
 ## Features
 
 - **GPU Virtualization**: Share a single physical GPU among multiple pods with configurable memory and compute limits
@@ -95,14 +97,4 @@ See [docs/configuration.md](docs/configuration.md) for full configuration option
 We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting pull requests.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feat/my-feature`)
-3. Commit your changes following [Conventional Commits](https://www.conventionalcommits.org/)
-4. Push to the branch and open a Pull Request
-
-## License
-
-HAMi is licensed under the [Apache License 2.0](LICENSE).
-
-## Acknowledgements
-
-This project is a fork of [Project-HAMi/HAMi](https://github.com/Project-HAMi/HAMi). We thank all original contributors for their work.
+2. Create your feature branch (`git checkou
